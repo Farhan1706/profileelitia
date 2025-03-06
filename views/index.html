@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITIA Laboratory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: sticky;
+            font-weight: bold;
+            top: 0;
+            z-index: 1020;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;  /* Navbar background transparan saat di atas */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+        header .navbar-nav .nav-link {
+            color: #6f4f1f;
+        }
+        header.sticky .navbar-nav .nav-link {
+            color: white;  /* Putih saat sticky */
+        }
+
+        header.sticky {
+            background-color: #000000; /* warna navbar */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* shadow */
+        }
+        /* Sidebar ketika navbar sticky */
+        header.sticky + .sidebar {
+            background-color: #000000; /* Warna background sidebar saat sticky */
+            color: white;  /* Teks sidebar berwarna putih saat sticky */
+        }
+
+        body.sticky-active {
+            padding-top: 70px;
+        }
+        
+        /* Navbar toggle button berada di kanan */
+        .navbar-toggler {
+            position: absolute; /* Membuat tombol hamburger terpisah */
+            right: 20px; /* Menempatkan tombol hamburger ke kanan */
+            z-index: 1050; /* Pastikan hamburger berada di atas sidebar */
+        }
+
+        /* Sidebar dengan z-index lebih rendah agar tidak menutupi hamburger */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            font-weight: bold;
+            height: 100%;
+            background-color: #343a40; /* Warna latar belakang sidebar default */
+            color: #6f4f1f; /* Teks berwarna coklat saat tidak sticky */
+            display: none;
+            z-index: 1000; /* Sidebar punya z-index lebih rendah */
+            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+            padding-top: 20px;
+        }
+
+        /* Sidebar aktif */
+        .sidebar.show {
+            display: block;
+        }
+
+        /* Mengatur margin pada body saat sidebar aktif */
+        body.sidebar-active {
+            margin-right: 250px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="text-white py-4 position-sticky top-0 z-index-10">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <img src="/assets/images/logo.png" alt="Logo Laboratorium" class="img-fluid" style="width: 60px;">
+                
+                <!-- Navbar Toggle Button for Mobile (White Button) -->
+                <button class="navbar-toggler d-md-none" type="button" id="sidebarToggle" aria-expanded="false" aria-label="Toggle navigation" style="outline: none; box-shadow: none;">
+                    <i class="bi bi-list text-black"></i>
+                </button>
+    
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-md w-100">
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#facilities">Fasilitas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#research">Penelitian</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#team">Anggota</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+  
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#about">Tentang Kami</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#facilities">Fasilitas</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#research">Penelitian</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#team">Anggota</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="#contact">Kontak</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero bg-light py-5 text-center">
+        <div class="container">
+            <h1 class="display-4">Electronic and Industrial Automation Laboratory</h1>
+            <p class="lead">Laboratorium yang berfokus pada Otomasi Industri dan Internet of Things.</p>
+            <a href="#research" class="btn btn-primary">Pelajari Penelitian Kami</a>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="mb-4">Tentang Kami</h2>
+            <p>Laboratorium ELITIA didirikan pada tahun 2000 dengan tujuan untuk mengembangkan riset ilmiah di bidang ...</p>
+        </div>
+    </section>
+
+    <!-- Fasilitas -->
+    <section id="facilities" class="bg-light py-5">
+        <div class="container">
+            <h2 class="mb-4">Fasilitas</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="facility1.jpg" class="card-img-top" alt="Fasilitas 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Peralatan Mikroskopi</h5>
+                            <p class="card-text">Kami memiliki berbagai mikroskop canggih untuk penelitian mikroskopik.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="facility2.jpg" class="card-img-top" alt="Fasilitas 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Laboratorium Kimia</h5>
+                            <p class="card-text">Fasilitas lengkap untuk penelitian kimia dengan alat laboratorium terbaru.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="facility3.jpg" class="card-img-top" alt="Fasilitas 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Laboratorium Biologi</h5>
+                            <p class="card-text">Kami memiliki fasilitas untuk penelitian biologi termasuk kultur sel dan eksperimen genetik.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Penelitian -->
+    <section id="research" class="py-5">
+        <div class="container">
+            <h2 class="mb-4">Penelitian</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="research1.jpg" class="card-img-top" alt="Penelitian 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Penelitian A</h5>
+                            <p class="card-text">Deskripsi singkat tentang penelitian A yang sedang berlangsung di laboratorium.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="research2.jpg" class="card-img-top" alt="Penelitian 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Penelitian B</h5>
+                            <p class="card-text">Deskripsi singkat tentang penelitian B yang telah selesai dilakukan oleh tim kami.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="research3.jpg" class="card-img-top" alt="Penelitian 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Penelitian C</h5>
+                            <p class="card-text">Deskripsi singkat tentang penelitian C yang berfokus pada ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tim -->
+    <section id="team" class="bg-light py-5">
+        <div class="container">
+            <h2 class="mb-4">Anggota Tim</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="team1.jpg" class="card-img-top" alt="Anggota Tim 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. John Doe</h5>
+                            <p class="card-text">Kepala Laboratorium</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="team2.jpg" class="card-img-top" alt="Anggota Tim 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Jane Smith</h5>
+                            <p class="card-text">Peneliti Utama</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="team3.jpg" class="card-img-top" alt="Anggota Tim 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Prof. Alan Brown</h5>
+                            <p class="card-text">Peneliti Senior</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="team4.jpg" class="card-img-top" alt="Anggota Tim 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. Emily White</h5>
+                            <p class="card-text">Asisten Peneliti</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="mb-4">Kontak Kami</h2>
+            <p>Alamat: Jalan ELITIA No. 123, Kota ABC</p>
+            <p>Email: labELITIA@example.com</p>
+            <p>Telepon: (021) 123-4567</p>
+            <a href="https://www.google.com/maps" target="_blank" class="btn btn-primary">Lihat Lokasi di Peta</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Laboratorium ELITIA. Semua hak cipta dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Skrip Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script untuk Toggle Sidebar -->
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const body = document.body;
+        
+        sidebarToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('show');
+            body.classList.toggle('sidebar-active');
+        });
+        
+        window.onscroll = function() {
+            const header = document.querySelector('header');
+            const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+            
+            if (window.scrollY > 0) {
+                // Ketika halaman di-scroll, navbar dan sidebar menjadi sticky
+                header.classList.add('sticky');
+                sidebar.classList.add('sticky'); // Menambahkan sticky pada sidebar
+                navbarLinks.forEach(link => {
+                    link.style.color = 'white';  /* Navbar text jadi putih saat scroll */
+                });
+                sidebarLinks.forEach(link => {
+                    link.style.color = 'white';  /* Sidebar text jadi putih saat scroll */
+                });
+            } else {
+                // Ketika halaman kembali ke atas, navbar dan sidebar kembali ke warna default
+                header.classList.remove('sticky');
+                sidebar.classList.remove('sticky'); // Menghapus sticky dari sidebar
+                navbarLinks.forEach(link => {
+                    link.style.color = '#6f4f1f';  /* Navbar text jadi coklat */
+                });
+                sidebarLinks.forEach(link => {
+                    link.style.color = '#6f4f1f';  /* Sidebar text jadi coklat */
+                });
+            }
+        };
+        
+        // Cek kondisi saat halaman pertama kali dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.scrollY > 0) {
+                const header = document.querySelector('header');
+                header.classList.add('sticky');
+                const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
+                const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+                navbarLinks.forEach(link => {
+                    link.style.color = 'white';  /* Navbar text jadi putih saat scroll */
+                });
+                sidebarLinks.forEach(link => {
+                    link.style.color = 'white';  /* Sidebar text jadi putih saat scroll */
+                });
+            }
+        });
+        
+
+    </script>
+</body>
+</html>
