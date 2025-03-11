@@ -6,15 +6,26 @@
     <title>ELITIA Laboratory</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
             padding: 0;
         }
-        header {
+
+        /* Header */
+        .header {
             position: sticky;
+            font-family: "Cabin", sans-serif;
+            font-optical-sizing: auto;
             font-weight: bold;
+            font-style: normal;
+            font-size: larger;
+            font-variation-settings: "wdth" 100;
             top: 0;
             z-index: 1020;
             margin: 0;
@@ -22,19 +33,23 @@
             background-color: transparent;  /* Navbar background transparan saat di atas */
             transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
         }
-        header .navbar-nav .nav-link {
-            color: #6f4f1f;
+
+        .header .navbar-nav .nav-link {
+            color: rgb(255, 187, 0);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
         }
-        header.sticky .navbar-nav .nav-link {
+
+        .header.sticky .navbar-nav .nav-link {
             color: white;  /* Putih saat sticky */
         }
 
-        header.sticky {
+        .header.sticky {
             background-color: #000000; /* warna navbar */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* shadow */
         }
+
         /* Sidebar ketika navbar sticky */
-        header.sticky + .sidebar {
+        .header.sticky + .sidebar {
             background-color: #000000; /* Warna background sidebar saat sticky */
             color: white;  /* Teks sidebar berwarna putih saat sticky */
         }
@@ -42,12 +57,22 @@
         body.sticky-active {
             padding-top: 70px;
         }
-        
+
         /* Navbar toggle button berada di kanan */
         .navbar-toggler {
             position: absolute; /* Membuat tombol hamburger terpisah */
             right: 20px; /* Menempatkan tombol hamburger ke kanan */
             z-index: 1050; /* Pastikan hamburger berada di atas sidebar */
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            color: white; /* Default color hitam */
+        }
+
+        .navbar-toggler-icon.scroll-active {
+            color: white; /* Warna putih saat scroll */
         }
 
         /* Sidebar dengan z-index lebih rendah agar tidak menutupi hamburger */
@@ -58,11 +83,10 @@
             width: 250px;
             font-weight: bold;
             height: 100%;
-            background-color: #343a40; /* Warna latar belakang sidebar default */
-            color: #6f4f1f; /* Teks berwarna coklat saat tidak sticky */
+            background-color: rgba(0, 0, 0, 0.75); /* Warna latar belakang sidebar default */
+            color: rgb(255, 187, 0); /* Teks berwarna coklat saat tidak sticky */
             display: none;
             z-index: 1000; /* Sidebar punya z-index lebih rendah */
-            box-shadow: -2px 0 5px rgba(0,0,0,0.5);
             padding-top: 20px;
         }
 
@@ -76,20 +100,94 @@
             margin-right: 250px;
         }
 
-        
+        /* Menyembunyikan elemen judul dan info lain dari YouTube */
+        iframe {
+            pointer-events: none;  /* Menonaktifkan interaksi dengan iframe */
+        }
+
+        iframe:focus {
+            outline: none;  /* Menghilangkan outline saat iframe difokuskan */
+        }
+
+        /* Video berada di belakang navbar dan hero section */
+        .video-background {
+            position: absolute;
+            top: -6%;
+            left: 0;
+            width: 100%;
+            height: 110vh; /* Menutupi layar penuh */
+            z-index: -1; /* Menempatkan video di belakang konten */
+            object-fit: cover; /* Menjaga proporsi video */
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh; /* Set hero section full height */
+            color: white;
+            text-align: left;
+            z-index: 1; /* Menempatkan teks di atas video */
+            padding-top: 20%; /* Menyediakan ruang untuk navbar di layar desktop */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            font-family: "Doto", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings: "ROND" 0;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-top: 10px;
+        }
+
+        .hero .btn {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 120px; /* Menyesuaikan padding-top untuk perangkat mobile */
+                text-align: center; /* Menyesuaikan posisi teks agar lebih rapi di mobile */
+            }
+
+            .hero h1 {
+                font-size: 2rem; /* Menurunkan ukuran font untuk mobile */
+            }
+
+            .hero p {
+                font-size: 1rem; /* Menurunkan ukuran font untuk mobile */
+            }
+
+            .hero .btn {
+                font-size: 0.875rem; /* Menyesuaikan ukuran tombol untuk mobile */
+            }
+        }
+
     </style>
 </head>
 <body>
 
+    <!-- Video Background -->
+    <iframe id="video" class="video-background" 
+            src="https://www.youtube.com/embed/e-fA-gBCkj0?autoplay=1&start=3&mute=1&loop=1&playlist=e-fA-gBCkj0&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0&iv_load_policy=3" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+    </iframe>
+
     <!-- Header -->
-    <header class="text-white py-4 position-sticky top-0 z-index-10">
+    <div class="header text-white py-4 position-sticky top-0 z-index-10">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <img src="/assets/images/logo.png" alt="Logo Laboratorium" class="img-fluid" style="width: 60px;">
                 
-                <!-- Navbar Toggle Button for Mobile (White Button) -->
+                <!-- Navbar Toggle Button for Mobile -->
                 <button class="navbar-toggler d-md-none" type="button" id="sidebarToggle" aria-expanded="false" aria-label="Toggle navigation" style="outline: none; box-shadow: none;">
-                    <i class="bi bi-list text-black"></i>
+                    <i class="bi bi-list navbar-toggler-icon"></i> <!-- Menambahkan class navbar-toggler-icon -->
                 </button>
     
                 <!-- Navbar -->
@@ -107,8 +205,8 @@
                 </nav>
             </div>
         </div>
-    </header>
-  
+    </div>
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <ul class="nav flex-column">
@@ -122,11 +220,11 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero bg-light py-5 text-center">
-        <div class="container">
+    <section class="hero">
+        <div class="container position-relative z-index-1">
             <h1 class="display-4">Electronic and Industrial Automation Laboratory</h1>
             <p class="lead">Laboratorium yang berfokus pada Otomasi Industri dan Internet of Things.</p>
-            <a href="#research" class="btn btn-primary">Pelajari Penelitian Kami</a>
+            <a href="#research" class="btn btn-transparent btn-outline-light text-light">Pelajari Penelitian Kami</a>
         </div>
     </section>
 
@@ -147,8 +245,8 @@
                     <div class="card">
                         <img src="facility1.jpg" class="card-img-top" alt="Fasilitas 1">
                         <div class="card-body">
-                            <h5 class="card-title">Peralatan Mikroskopi</h5>
-                            <p class="card-text">Kami memiliki berbagai mikroskop canggih untuk penelitian mikroskopik.</p>
+                            <h5 class="card-title">Lab</h5>
+                            <p class="card-text">Dolor sit amet.</p>
                         </div>
                     </div>
                 </div>
@@ -156,8 +254,8 @@
                     <div class="card">
                         <img src="facility2.jpg" class="card-img-top" alt="Fasilitas 2">
                         <div class="card-body">
-                            <h5 class="card-title">Laboratorium Kimia</h5>
-                            <p class="card-text">Fasilitas lengkap untuk penelitian kimia dengan alat laboratorium terbaru.</p>
+                            <h5 class="card-title">Laboratorium</h5>
+                            <p class="card-text">dolor sit amet</p>
                         </div>
                     </div>
                 </div>
@@ -165,8 +263,8 @@
                     <div class="card">
                         <img src="facility3.jpg" class="card-img-top" alt="Fasilitas 3">
                         <div class="card-body">
-                            <h5 class="card-title">Laboratorium Biologi</h5>
-                            <p class="card-text">Kami memiliki fasilitas untuk penelitian biologi termasuk kultur sel dan eksperimen genetik.</p>
+                            <h5 class="card-title">Laboratorium</h5>
+                            <p class="card-text">dolor sit amet.</p>
                         </div>
                     </div>
                 </div>
@@ -210,62 +308,6 @@
         </div>
     </section>
 
-    <!-- Tim -->
-    <section id="team" class="bg-light py-5">
-        <div class="container">
-            <h2 class="mb-4">Anggota Tim</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="team1.jpg" class="card-img-top" alt="Anggota Tim 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. John Doe</h5>
-                            <p class="card-text">Kepala Laboratorium</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="team2.jpg" class="card-img-top" alt="Anggota Tim 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. Jane Smith</h5>
-                            <p class="card-text">Peneliti Utama</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="team3.jpg" class="card-img-top" alt="Anggota Tim 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Prof. Alan Brown</h5>
-                            <p class="card-text">Peneliti Senior</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="team4.jpg" class="card-img-top" alt="Anggota Tim 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Dr. Emily White</h5>
-                            <p class="card-text">Asisten Peneliti</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kontak -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="mb-4">Kontak Kami</h2>
-            <p>Alamat: Jalan ELITIA No. 123, Kota ABC</p>
-            <p>Email: labELITIA@example.com</p>
-            <p>Telepon: (021) 123-4567</p>
-            <a href="https://www.google.com/maps" target="_blank" class="btn btn-primary">Lihat Lokasi di Peta</a>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-dark text-white py-4">
         <div class="container text-center">
@@ -286,16 +328,25 @@
             sidebar.classList.toggle('show');
             body.classList.toggle('sidebar-active');
         });
-        
+
+        // Hide video recommendations after the video ends
+        const iframe = document.getElementById('video');
+        iframe.addEventListener('ended', function () {
+            // Hide recommendations or do any other action
+            iframe.style.display = 'none';  // Example: Hide the iframe after video ends
+        });
+
         window.onscroll = function() {
-            const header = document.querySelector('header');
+            const header = document.querySelector('.header');
             const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
             const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
+            const navbarTogglerIcon = document.querySelector('.navbar-toggler-icon');
             
             if (window.scrollY > 0) {
                 // Ketika halaman di-scroll, navbar dan sidebar menjadi sticky
                 header.classList.add('sticky');
                 sidebar.classList.add('sticky'); // Menambahkan sticky pada sidebar
+                navbarTogglerIcon.classList.add('scroll-active');
                 navbarLinks.forEach(link => {
                     link.style.color = 'white';  /* Navbar text jadi putih saat scroll */
                 });
@@ -306,19 +357,20 @@
                 // Ketika halaman kembali ke atas, navbar dan sidebar kembali ke warna default
                 header.classList.remove('sticky');
                 sidebar.classList.remove('sticky'); // Menghapus sticky dari sidebar
+                navbarTogglerIcon.classList.remove('scroll-active');
                 navbarLinks.forEach(link => {
-                    link.style.color = '#6f4f1f';  /* Navbar text jadi coklat */
+                    link.style.color = 'rgb(255, 187, 0)';  /* Navbar text jadi coklat */
                 });
                 sidebarLinks.forEach(link => {
-                    link.style.color = '#6f4f1f';  /* Sidebar text jadi coklat */
+                    link.style.color = 'rgb(255, 187, 0)';  /* Sidebar text jadi coklat */
                 });
             }
         };
-        
+
         // Cek kondisi saat halaman pertama kali dimuat
         document.addEventListener('DOMContentLoaded', function() {
             if (window.scrollY > 0) {
-                const header = document.querySelector('header');
+                const header = document.querySelector('.header');
                 header.classList.add('sticky');
                 const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
                 const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
@@ -330,8 +382,6 @@
                 });
             }
         });
-        
-
     </script>
 </body>
 </html>
