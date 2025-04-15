@@ -1,0 +1,52 @@
+{{ define "layout" }}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ .Title }}</title>
+
+    <!-- CoreUI CSS -->
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/vendors/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="/assets/css/vendors/simplebar.css" rel="stylesheet" />
+    <link href="/assets/css/examples.css" rel="stylesheet" />
+    <link
+      href="/assets/vendors/@coreui/chartjs/css/coreui-chartjs.css"
+      rel="stylesheet"
+    />
+
+    <!-- Choices CSS -->
+    <link rel="stylesheet" href="/assets/css/choices.css" />
+
+    <!-- Config and Color Modes JS (for your site settings) -->
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/color-modes.js"></script>
+  </head>
+
+  <body>
+    {{ template "sidebar" . }}
+
+    <!-- Main wrapper, body and content -->
+    <div class="wrapper d-flex flex-column min-vh-100">
+      {{ template "navbar" . }}
+
+      <!-- Main Content Area -->
+      <main class="">{{ block "content" . }}{{ end }}</main>
+
+      {{ template "footer" . }}
+    </div>
+
+    <!-- CoreUI JS -->
+    <script src="/assets/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="/assets/vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="/assets/vendors/chart.js/js/chart.umd.js"></script>
+    <script src="/assets/vendors/@coreui/chartjs/js/coreui-chartjs.js"></script>
+    <script src="/assets/vendors/@coreui/utils/js/index.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Choices.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+  </body>
+</html>
+{{ end }}

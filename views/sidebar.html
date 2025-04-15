@@ -1,0 +1,163 @@
+{{ define "sidebar" }}
+<div class="sidebar sidebar-dark sidebar-fixed border-end" id="sidebar">
+  <div class="sidebar-header border-bottom">
+    <div class="sidebar-brand">
+      <!-- Logo besar (full logo) -->
+      <img
+        src="/assets/images/logo.png"
+        alt="Logo"
+        class="sidebar-brand-full"
+        height="32"
+      />
+
+      <!-- Logo kecil (narrow logo) -->
+      <img
+        src="/assets/images/logo.png"
+        alt="Logo"
+        class="sidebar-brand-narrow"
+        height="32"
+      />
+    </div>
+    <!-- <button class="btn-close d-lg-none" type="button" data-coreui-theme="dark" aria-label="Close" onclick="coreui.Sidebar.getInstance(document.querySelector(&quot;#sidebar&quot;)).toggle()"></button> -->
+  </div>
+  <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+    <li class="nav-item">
+      <a class="nav-link" href="/main">
+        <svg class="nav-icon">
+          <use
+            xlink:href="/assets/vendors/@coreui/icons/svg/free.svg#cil-speedometer"
+          ></use>
+        </svg>
+        Dashboard</a
+      >
+    </li>
+    <li class="nav-title">Manajemen Konten</li>
+    <li class="nav-group">
+      <a class="nav-link nav-group-toggle" href="/main">
+        <svg class="nav-icon">
+          <use
+            xlink:href="/assets/vendors/@coreui/icons/svg/free.svg#cil-control"
+          ></use></svg
+        >Profil Organisasi</a
+      >
+      <ul class="nav-group-items compact">
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Deskripsi Organisasi</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Visi dan Misi</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Struktur Organisasi</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Sejarah Organisasi</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li class="nav-title">Manajemen Pengguna</li>
+    <li class="nav-group">
+      <a class="nav-link nav-group-toggle" href="/#">
+        <svg class="nav-icon">
+          <use
+            xlink:href="/assets/vendors/@coreui/icons/svg/free.svg#cil-ethernet"
+          ></use></svg
+        >Divisi</a
+      >
+      <ul class="nav-group-items compact">
+        <li class="nav-item">
+          <a class="nav-link" href="/divisi"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Daftar Divisi</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/divisi/tambah"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Tambah Divisi Baru</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li class="nav-group">
+      <a class="nav-link nav-group-toggle" href="/#">
+        <svg class="nav-icon">
+          <use
+            xlink:href="/assets/vendors/@coreui/icons/svg/free.svg#cil-group"
+          ></use></svg
+        >Anggota</a
+      >
+      <ul class="nav-group-items compact">
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Daftar Anggota</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Tambah Anggota Baru</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Profil Anggota</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/base/accordion.html"
+            ><span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+            Edit Anggota</a
+          >
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item mt-auto">
+      <a class="nav-link" href="/log">
+        <svg class="nav-icon">
+          <use
+            xlink:href="/assets/vendors/@coreui/icons/svg/free.svg#cil-file"
+          ></use>
+        </svg>
+        Log</a
+      >
+    </li>
+    <li class="nav-item mt-1">
+      <a
+        class="nav-link"
+        href="https://github.com/Farhan1706/profileelitia"
+        target="_blank"
+      >
+        <svg class="nav-icon">
+          <use
+            xlink:href="/assets/vendors/@coreui/icons/svg/free.svg#cil-description"
+          ></use>
+        </svg>
+        Docs</a
+      >
+    </li>
+  </ul>
+  <div class="sidebar-footer border-top d-none d-md-flex">
+    <button
+      class="sidebar-toggler"
+      type="button"
+      data-coreui-toggle="unfoldable"
+    ></button>
+  </div>
+</div>
+{{ end }}

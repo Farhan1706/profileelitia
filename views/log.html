@@ -1,0 +1,56 @@
+{{ define "content" }}
+<div class="body flex-grow-1">
+  <div class="container-lg px-4">
+    <h3>Data Log</h3>
+    <div class="docs-example">
+      <table id="logTable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Log ID</th>
+            <th>Action</th>
+            <th>Table Name</th>
+            <th>Record ID</th>
+            <th>User ID</th>
+            <th>Previous Data</th>
+            <th>New Data</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#logTable").DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: {
+        url: "/log/data",
+        type: "GET",
+        dataSrc: function (json) {
+          return json.data;
+        },
+      },
+      columns: [
+        { data: "log_id" },
+        { data: "action" },
+        { data: "table_name" },
+        { data: "record_id" },
+        { data: "user_id" },
+        { data: "previous_data" },
+        { data: "new_data" },
+        { data: "timestamp" },
+      ],
+    });
+
+    setInterval(function () {
+      $("#logTable").DataTable().ajax.reload(null, false);
+    }, 5000);
+  });
+</script>
+{{ end }}

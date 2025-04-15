@@ -1,581 +1,636 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ELITIA Laboratory</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&display=swap" rel="stylesheet">
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Concert+One&family=Doto:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
-        /* Header */
-        .header {
-            position: sticky;
-            font-family: "Cabin", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: bold;
-            font-style: normal;
-            font-size: xx-large;
-            font-variation-settings: "wdth" 100;
-            top: 0;
-            z-index: 1020;
-            margin: 0;
-            padding: 0;
-            background-color: transparent;  /* Navbar background transparan saat di atas */
-            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-        }
+      /* Header */
+      .header {
+        position: sticky;
+        font-family: "Cabin", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        font-size: xx-large;
+        font-variation-settings: "wdth" 100;
+        top: 0;
+        z-index: 1020;
+        margin: 0;
+        padding: 0;
+        background-color: transparent; /* Navbar background transparan saat di atas */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      }
 
-        .header .navbar-nav .nav-link {
-            color: rgb(255, 187, 0);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-            font-size: large;
-        }
+      .header .navbar-nav .nav-link {
+        color: rgb(255, 187, 0);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+          0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+        font-size: large;
+      }
 
-        .header.sticky .navbar-nav .nav-link {
-            color: white;  /* Putih saat sticky */
-        }
+      .header.sticky .navbar-nav .nav-link {
+        color: white; /* Putih saat sticky */
+      }
 
-        .header.sticky {
-            background-color: #000000; /* warna navbar */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* shadow */
-        }
+      .header.sticky {
+        background-color: #000000; /* warna navbar */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* shadow */
+      }
 
-        .header.sticky + .sidebar {
-            background-color: #000000; /* Warna background sidebar saat sticky */
-            color: white;  /* Teks sidebar berwarna putih saat sticky */
-        }
+      .header.sticky + .sidebar {
+        background-color: #000000; /* Warna background sidebar saat sticky */
+        color: white; /* Teks sidebar berwarna putih saat sticky */
+      }
 
-        body.sticky-active {
-            padding-top: 70px;
-        }
+      body.sticky-active {
+        padding-top: 70px;
+      }
 
-        /* Navbar toggle button berada di kanan */
-        .navbar-toggler {
-            position: absolute; /* Membuat tombol hamburger terpisah */
-            right: 20px; /* Menempatkan tombol hamburger ke kanan */
-            z-index: 1050; /* Pastikan hamburger berada di atas sidebar */
-            border: none;
-            outline: none;
-        }
+      /* Navbar toggle button berada di kanan */
+      .navbar-toggler {
+        position: absolute; /* Membuat tombol hamburger terpisah */
+        right: 20px; /* Menempatkan tombol hamburger ke kanan */
+        z-index: 1050; /* Pastikan hamburger berada di atas sidebar */
+        border: none;
+        outline: none;
+      }
 
-        .navbar-toggler-icon {
-            color: white; /* Default color hitam */
-        }
+      .navbar-toggler-icon {
+        color: white; /* Default color hitam */
+      }
 
-        .navbar-toggler-icon.scroll-active {
-            color: white; /* Warna putih saat scroll */
-        }
+      .navbar-toggler-icon.scroll-active {
+        color: white; /* Warna putih saat scroll */
+      }
 
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 250px;
-            font-weight: bold;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            color: rgb(255, 187, 0);
-            display: none;
-            z-index: 1000;
-            padding-top: 20px;
-        }
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        font-weight: bold;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        color: rgb(255, 187, 0);
+        display: none;
+        z-index: 1000;
+        padding-top: 20px;
+      }
 
-        .sidebar.show {
-            display: block;
-        }
+      .sidebar.show {
+        display: block;
+      }
 
-        /* Mengatur margin pada body saat sidebar aktif */
-        body.sidebar-active {
-            margin-right: 250px;
-        }
+      /* Mengatur margin pada body saat sidebar aktif */
+      body.sidebar-active {
+        margin-right: 250px;
+      }
 
-        /* Menyembunyikan elemen judul dan info lain dari YouTube */
-        iframe {
-            pointer-events: none;  /* Menonaktifkan interaksi dengan iframe */
-        }
+      /* Menyembunyikan elemen judul dan info lain dari YouTube */
+      iframe {
+        pointer-events: none; /* Menonaktifkan interaksi dengan iframe */
+      }
 
-        iframe:focus {
-            outline: none;  /* Menghilangkan outline saat iframe difokuskan */
-        }
+      iframe:focus {
+        outline: none; /* Menghilangkan outline saat iframe difokuskan */
+      }
 
-        /* Video berada di belakang navbar dan hero section */
-        .video-background {
-            position: absolute;
-            top: -6%;
-            left: 0;
-            width: 100%;
-            height: 110vh; /* Menutupi layar penuh */
-            z-index: -1; /* Menempatkan video di belakang konten */
-            object-fit: cover; /* Menjaga proporsi video */
-        }
+      /* Video berada di belakang navbar dan hero section */
+      .video-background {
+        position: absolute;
+        top: -6%;
+        left: 0;
+        width: 100%;
+        height: 110vh; /* Menutupi layar penuh */
+        z-index: -1; /* Menempatkan video di belakang konten */
+        object-fit: cover; /* Menjaga proporsi video */
+      }
 
-        /* Hero Section */
+      /* Hero Section */
+      .hero {
+        position: relative;
+        height: 100vh; /* Set hero section full height */
+        color: white;
+        text-align: left;
+        z-index: 1; /* Menempatkan teks di atas video */
+        padding-top: 20%; /* Menyediakan ruang untuk navbar di layar desktop */
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Doto", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings: "ROND" 0;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-top: 10px;
+      }
+
+      .hero .btn {
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
         .hero {
-            position: relative;
-            height: 100vh; /* Set hero section full height */
-            color: white;
-            text-align: left;
-            z-index: 1; /* Menempatkan teks di atas video */
-            padding-top: 20%; /* Menyediakan ruang untuk navbar di layar desktop */
+          padding-top: 120px; /* Menyesuaikan padding-top untuk perangkat mobile */
+          text-align: center; /* Menyesuaikan posisi teks agar lebih rapi di mobile */
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            font-family: "Doto", sans-serif;
-            font-optical-sizing: auto;
-            font-style: normal;
-            font-variation-settings: "ROND" 0;
+          font-size: 2rem; /* Menurunkan ukuran font untuk mobile */
         }
 
         .hero p {
-            font-size: 1.25rem;
-            margin-top: 10px;
+          font-size: 1rem; /* Menurunkan ukuran font untuk mobile */
         }
 
         .hero .btn {
-            margin-top: 20px;
+          font-size: 0.875rem; /* Menyesuaikan ukuran tombol untuk mobile */
         }
+      }
 
-        @media (max-width: 768px) {
-            .hero {
-                padding-top: 120px; /* Menyesuaikan padding-top untuk perangkat mobile */
-                text-align: center; /* Menyesuaikan posisi teks agar lebih rapi di mobile */
-            }
+      /* Daftar Anggota */
+      .slider {
+        width: 100%;
+        height: var(--height);
+        overflow: hidden;
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 10% 90%,
+          transparent
+        );
+      }
 
-            .hero h1 {
-                font-size: 2rem; /* Menurunkan ukuran font untuk mobile */
-            }
+      .slider .list {
+        display: flex;
+        width: 100%;
+        min-width: calc(var(--width) * var(--quantity));
+        position: relative;
+      }
 
-            .hero p {
-                font-size: 1rem; /* Menurunkan ukuran font untuk mobile */
-            }
+      .slider .list .item {
+        width: var(--width);
+        height: var(--height);
+        position: absolute;
+        left: 100%;
+        animation: autoRun 15s linear infinite;
+        transition: filter 0.5s;
+        animation-delay: calc(
+          (15s / var(--quantity)) * (var(--position) - 1) - 10s
+        ) !important;
+      }
 
-            .hero .btn {
-                font-size: 0.875rem; /* Menyesuaikan ukuran tombol untuk mobile */
-            }
+      .slider .list .item img {
+        width: 100%;
+      }
+
+      @keyframes autoRun {
+        from {
+          left: 100%;
         }
-
-        /* Daftar Anggota */
-        .slider {
-            width: 100%;
-            height: var(--height);
-            overflow: hidden;
-            mask-image: linear-gradient(
-                to right,
-                transparent,
-                #000 10% 90%,
-                transparent
-            );
+        to {
+          left: calc(var(--width) * -1);
         }
+      }
 
-        .slider .list {
-            display: flex;
-            width: 100%;
-            min-width: calc(var(--width) * var(--quantity));
-            position: relative;
-        }
+      .slider:hover .item {
+        animation-play-state: paused !important;
+        filter: grayscale(1);
+      }
 
-        .slider .list .item {
-            width: var(--width);
-            height: var(--height);
-            position: absolute;
-            left: 100%;
-            animation: autoRun 15s linear infinite;
-            transition: filter 0.5s;
-            animation-delay: calc((15s / var(--quantity)) * (var(--position) - 1) - 10s)!important;
-        }
+      .slider .item:hover {
+        filter: grayscale(0);
+      }
 
-        .slider .list .item img {
-            width: 100%;
+      @keyframes reversePlay {
+        from {
+          left: calc(var(--width) * -1);
         }
+        to {
+          left: 100%;
+        }
+      }
 
-        @keyframes autoRun {
-            from {
-                left: 100%;
-            }
-            to {
-                left: calc(var(--width) * -1);
-            }
-        }
+      /* Custom CSS untuk hover dan tombol */
+      .slider .item {
+        width: var(--width);
+        height: var(--height);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .slider:hover .item {
-            animation-play-state: paused!important;
-            filter: grayscale(1);
-        }
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.3s;
+      }
 
-        .slider .item:hover {
-            filter: grayscale(0);
-        }
+      .image-container .name {
+        position: absolute;
+        bottom: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "Rubik Glitch", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: larger;
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-        @keyframes reversePlay {
-            from {
-                left: calc(var(--width) * -1);
-            }
-            to {
-                left: 100%;
-            }
-        }
+      .image-container .view-more {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 5px 10px;
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        font-size: 14px;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+      }
 
-        /* Custom CSS untuk hover dan tombol */
-        .slider .item {
-            width: var(--width);
-            height: var(--height);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      .slider .item:hover .image-container .name {
+        opacity: 1;
+      }
 
-        .image-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.3s;
-        }
+      .slider .item:hover .image-container .view-more {
+        opacity: 1;
+      }
 
-        .image-container .name {
-            position: absolute;
-            bottom: 90px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: "Rubik Glitch", system-ui;
-            font-weight: 400;
-            font-style: normal;
-            font-size: larger;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+      .slider .item:hover .image-container {
+        transform: scale(1.1);
+      }
 
-        .image-container .view-more {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 5px 10px;
-            border: 2px solid black;
-            background-color: transparent;
-            color: black;
-            font-size: 14px;
-            opacity: 0;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
+      .card-body-hover {
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        transition: display 0.3s;
+      }
 
-        .slider .item:hover .image-container .name {
-            opacity: 1;
-        }
+      .list:hover .card-body-hover {
+        display: block;
+      }
 
-        .slider .item:hover .image-container .view-more {
-            opacity: 1;
-        }
-
-        .slider .item:hover .image-container {
-            transform: scale(1.1);
-        }
+      .chart-wrapper,
+      .card-body-hover {
+        pointer-events: none;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Video Background -->
-    <iframe id="video" class="video-background" 
-        src="https://www.youtube.com/embed/e-fA-gBCkj0?autoplay=1&start=3&mute=1&loop=1&playlist=e-fA-gBCkj0&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0&iv_load_policy=3&cc_load_policy=0&cc_lang_pref=&hl=en" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
+    <iframe
+      id="video"
+      class="video-background"
+      src="https://www.youtube.com/embed/e-fA-gBCkj0?autoplay=1&start=3&mute=1&loop=1&playlist=e-fA-gBCkj0&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0&iv_load_policy=3&cc_load_policy=0&cc_lang_pref=&hl=en"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    >
     </iframe>
-
 
     <!-- Header -->
     <div class="header text-white py-4 position-sticky top-0 z-index-10">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <img src="/assets/images/logo.png" alt="Logo Laboratorium" class="img-fluid" style="width: 60px;">
-                
-                <!-- Navbar Toggle Button for Mobile -->
-                <button class="navbar-toggler d-md-none" type="button" id="sidebarToggle" aria-expanded="false" aria-label="Toggle navigation" style="outline: none; box-shadow: none;">
-                    <i class="bi bi-list navbar-toggler-icon"></i> <!-- Menambahkan class navbar-toggler-icon -->
-                </button>
-    
-                <!-- Navbar -->
-                <nav class="navbar navbar-expand-md w-100">
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#facilities">Fasilitas</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#research">Penelitian</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#team">Anggota</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
-                        </ul>
-                    </div>
-                </nav>
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <img
+            src="/assets/images/logo.png"
+            alt="Logo Laboratorium"
+            class="img-fluid"
+            style="width: 60px"
+          />
+
+          <button
+            class="navbar-toggler d-md-none"
+            type="button"
+            id="sidebarToggle"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style="outline: none; box-shadow: none"
+          >
+            <i class="bi bi-list navbar-toggler-icon"></i>
+          </button>
+
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-md w-100">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">Tentang Kami</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#facilities">Fasilitas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#research">Penelitian</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#team">Anggota</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Kontak</a>
+                </li>
+              </ul>
             </div>
+          </nav>
         </div>
+      </div>
     </div>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#about">Tentang Kami</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#facilities">Fasilitas</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#research">Penelitian</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#team">Anggota</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#contact">Kontak</a></li>
-        </ul>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#about">Tentang Kami</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#facilities">Fasilitas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#research">Penelitian</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#team">Anggota</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#contact">Kontak</a>
+        </li>
+      </ul>
     </div>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container position-relative z-index-1">
-            <h1 class="display-4">Electronic and Industrial Automation Laboratory</h1>
-            <p class="lead">Laboratorium yang berfokus pada Otomasi Industri dan Internet of Things.</p>
-            <a href="#research" class="btn btn-transparent btn-outline-light text-light">Pelajari Penelitian Kami</a>
-        </div>
+      <div class="container position-relative z-index-1">
+        <h1 class="display-4">
+          Electronic and Industrial Automation Laboratory
+        </h1>
+        <p class="lead">
+          Laboratorium yang berfokus pada Otomasi Industri dan Internet of
+          Things.
+        </p>
+        <a
+          href="#research"
+          class="btn btn-transparent btn-outline-light text-light"
+          >Pelajari Penelitian Kami</a
+        >
+      </div>
     </section>
 
     <!-- Tentang Kami -->
     <section id="about" class="py-5">
-        <div class="container">
-            <h2 class="mb-4">Tentang Kami</h2>
-            <p>Laboratorium ELITIA didirikan </p>
-        </div>
+      <div class="container">
+        <h2 class="mb-4">Tentang Kami</h2>
+        <p>Laboratorium ELITIA didirikan</p>
+      </div>
     </section>
 
     <!-- Anggota -->
     <section id="team" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4">Anggota Kami</h2>
-            <div class="slider" reverse="true" style="--width: 350px; --height: 350px; --quantity: 9;">
-                <div class="list">
-                    <div class="item" style="--position: 1">
-                        <div class="image-container">
-                            <img src="/assets/images/1.jpg" alt="">
-                            <div class="name">Kordas & Wakordas</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 2">
-                        <div class="image-container">
-                            <img src="/assets/images/2.jpg" alt="">
-                            <div class="name">Sekretaris</div>
-                            <button class="btn view-more ">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 3">
-                        <div class="image-container">
-                            <img src="/assets/images/3.jpg" alt="">
-                            <div class="name">Bendahara</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 4">
-                        <div class="image-container">
-                            <img src="/assets/images/4.jpg" alt="">
-                            <div class="name">Disiplin</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 5">
-                        <div class="image-container">
-                            <img src="/assets/images/5.jpg" alt="">
-                            <div class="name">Publikasi & Dokumen</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 6">
-                        <div class="image-container">
-                            <img src="/assets/images/6.jpg" alt="">
-                            <div class="name">Hubungan Manusia</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 7">
-                        <div class="image-container">
-                            <img src="/assets/images/7.jpg" alt="">
-                            <div class="name">Praktikum</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 8">
-                        <div class="image-container">
-                            <img src="/assets/images/8.jpg" alt="">
-                            <div class="name">Logistik</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
-                    <div class="item" style="--position: 9">
-                        <div class="image-container">
-                            <img src="/assets/images/9.jpg" alt="">
-                            <div class="name">Riset</div>
-                            <button class="btn view-more">Lihat Selengkapnya</button>
-                        </div>
-                    </div>
+      <div class="container">
+        <h2 class="mb-4">Anggota Kami</h2>
+        <div
+          class="slider"
+          reverse="true"
+          style="--width: 350px; --height: 350px; --quantity: 9"
+        >
+          {{range $index, $divisi := .}}
+          <div class="list">
+            <div class="item" style="--position: {{add $index 1}}">
+              <div class="image-container">
+                <img src="{{ .ImgURL }}" alt="" />
+                <div
+                  class="card-body-hover text-center"
+                  onclick="window.location.href='/link-anda'"
+                >
+                  <div class="fs-5 fw-semibold">{{.Name}}</div>
+                  <div class="text-uppercase text-white small">
+                    {{.Description}}
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+          {{end}}
         </div>
+      </div>
     </section>
 
     <!-- Fasilitas -->
     <section id="facilities" class="py-5">
-        <div class="container">
-            <h2 class="mb-4">Fasilitas</h2>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="facility1.jpg" class="card-img-top" alt="Fasilitas 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Lab</h5>
-                            <p class="card-text">Dolor sit amet.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="facility2.jpg" class="card-img-top" alt="Fasilitas 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Laboratorium</h5>
-                            <p class="card-text">dolor sit amet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="facility3.jpg" class="card-img-top" alt="Fasilitas 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Laboratorium</h5>
-                            <p class="card-text">dolor sit amet.</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="mb-4">Fasilitas</h2>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img src="facility1.jpg" class="card-img-top" alt="Fasilitas 1" />
+              <div class="card-body">
+                <h5 class="card-title">Lab</h5>
+                <p class="card-text">Dolor sit amet.</p>
+              </div>
             </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img src="facility2.jpg" class="card-img-top" alt="Fasilitas 2" />
+              <div class="card-body">
+                <h5 class="card-title">Laboratorium</h5>
+                <p class="card-text">dolor sit amet</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img src="facility3.jpg" class="card-img-top" alt="Fasilitas 3" />
+              <div class="card-body">
+                <h5 class="card-title">Laboratorium</h5>
+                <p class="card-text">dolor sit amet.</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Penelitian -->
     <section id="research" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4">Penelitian</h2>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="research1.jpg" class="card-img-top" alt="Penelitian 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Penelitian A</h5>
-                            <p class="card-text">Deskripsi singkat tentang penelitian A yang sedang berlangsung di laboratorium.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="research2.jpg" class="card-img-top" alt="Penelitian 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Penelitian B</h5>
-                            <p class="card-text">Deskripsi singkat tentang penelitian B yang telah selesai dilakukan oleh tim kami.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="research3.jpg" class="card-img-top" alt="Penelitian 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Penelitian C</h5>
-                            <p class="card-text">Deskripsi singkat tentang penelitian C yang berfokus pada ...</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="mb-4">Penelitian</h2>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img
+                src="research1.jpg"
+                class="card-img-top"
+                alt="Penelitian 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Penelitian A</h5>
+                <p class="card-text">
+                  Deskripsi singkat tentang penelitian A yang sedang berlangsung
+                  di laboratorium.
+                </p>
+              </div>
             </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img
+                src="research2.jpg"
+                class="card-img-top"
+                alt="Penelitian 2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Penelitian B</h5>
+                <p class="card-text">
+                  Deskripsi singkat tentang penelitian B yang telah selesai
+                  dilakukan oleh tim kami.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img
+                src="research3.jpg"
+                class="card-img-top"
+                alt="Penelitian 3"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Penelitian C</h5>
+                <p class="card-text">
+                  Deskripsi singkat tentang penelitian C yang berfokus pada ...
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2025 Laboratorium ELITIA. Semua hak cipta dilindungi.</p>
-        </div>
+      <div class="container text-center">
+        <p>&copy; 2025 Laboratorium ELITIA. Semua hak cipta dilindungi.</p>
+      </div>
     </footer>
 
-    <!-- Skrip Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Script untuk Toggle Sidebar -->
     <script>
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebar = document.getElementById('sidebar');
-        const body = document.body;
-        
-        sidebarToggle.addEventListener('click', function () {
-            sidebar.classList.toggle('show');
-            body.classList.toggle('sidebar-active');
-        });
+      const sidebarToggle = document.getElementById("sidebarToggle");
+      const sidebar = document.getElementById("sidebar");
+      const body = document.body;
 
-        // Hide video recommendations after the video ends
-        const iframe = document.getElementById('video');
-        iframe.addEventListener('ended', function () {
-            // Hide recommendations or do any other action
-            iframe.style.display = 'none';  // Example: Hide the iframe after video ends
-        });
+      sidebarToggle.addEventListener("click", function () {
+        sidebar.classList.toggle("show");
+        body.classList.toggle("sidebar-active");
+      });
 
-        window.onscroll = function() {
-            const header = document.querySelector('.header');
-            const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
-            const navbarTogglerIcon = document.querySelector('.navbar-toggler-icon');
-            
-            if (window.scrollY > 0) {
-                // Ketika halaman di-scroll, navbar dan sidebar menjadi sticky
-                header.classList.add('sticky');
-                sidebar.classList.add('sticky'); // Menambahkan sticky pada sidebar
-                navbarTogglerIcon.classList.add('scroll-active');
-                navbarLinks.forEach(link => {
-                    link.style.color = 'white';  /* Navbar text jadi putih saat scroll */
-                });
-                sidebarLinks.forEach(link => {
-                    link.style.color = 'white';  /* Sidebar text jadi putih saat scroll */
-                });
-            } else {
-                // Ketika halaman kembali ke atas, navbar dan sidebar kembali ke warna default
-                header.classList.remove('sticky');
-                sidebar.classList.remove('sticky'); // Menghapus sticky dari sidebar
-                navbarTogglerIcon.classList.remove('scroll-active');
-                navbarLinks.forEach(link => {
-                    link.style.color = 'rgb(255, 187, 0)';  /* Navbar text jadi coklat */
-                });
-                sidebarLinks.forEach(link => {
-                    link.style.color = 'rgb(255, 187, 0)';  /* Sidebar text jadi coklat */
-                });
-            }
-        };
+      const iframe = document.getElementById("video");
+      iframe.addEventListener("ended", function () {
+        iframe.style.display = "none";
+      });
 
-        // Cek kondisi saat halaman pertama kali dimuat
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.scrollY > 0) {
-                const header = document.querySelector('.header');
-                header.classList.add('sticky');
-                const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
-                const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
-                navbarLinks.forEach(link => {
-                    link.style.color = 'white';  /* Navbar text jadi putih saat scroll */
-                });
-                sidebarLinks.forEach(link => {
-                    link.style.color = 'white';  /* Sidebar text jadi putih saat scroll */
-                });
-            }
-        });
+      window.onscroll = function () {
+        const header = document.querySelector(".header");
+        const navbarLinks = document.querySelectorAll(".navbar-nav .nav-link");
+        const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+        const navbarTogglerIcon = document.querySelector(
+          ".navbar-toggler-icon"
+        );
+
+        if (window.scrollY > 0) {
+          header.classList.add("sticky");
+          sidebar.classList.add("sticky");
+          navbarTogglerIcon.classList.add("scroll-active");
+          navbarLinks.forEach((link) => {
+            link.style.color = "white";
+          });
+          sidebarLinks.forEach((link) => {
+            link.style.color = "white";
+          });
+        } else {
+          header.classList.remove("sticky");
+          sidebar.classList.remove("sticky");
+          navbarTogglerIcon.classList.remove("scroll-active");
+          navbarLinks.forEach((link) => {
+            link.style.color = "rgb(255, 187, 0)";
+          });
+          sidebarLinks.forEach((link) => {
+            link.style.color = "rgb(255, 187, 0)";
+          });
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.scrollY > 0) {
+          const header = document.querySelector(".header");
+          header.classList.add("sticky");
+          const navbarLinks = document.querySelectorAll(
+            ".navbar-nav .nav-link"
+          );
+          const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+          navbarLinks.forEach((link) => {
+            link.style.color = "white";
+          });
+          sidebarLinks.forEach((link) => {
+            link.style.color = "white";
+          });
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

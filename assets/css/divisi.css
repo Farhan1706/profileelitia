@@ -1,0 +1,129 @@
+body:not(.dark-mode) .choices__input,
+body:not(.dark-mode) .choices__input--cloned,
+body:not(.dark-mode) .choices__item,
+body:not(.dark-mode) .choices__inner {
+  background-color: var(--cui-body-bg);
+  color: var(--cui-body-color);
+}
+
+body:not(.dark-mode) .choices__item {
+  background-color: var(--cui-body-bg);
+  color: var(--cui-body-color);
+}
+
+body:not(.dark-mode) .choices__inner {
+  border: 1px solid var(--cui-border-color);
+  border-radius: 0.5rem;
+}
+
+body.dark-mode .choices__input,
+body.dark-mode .choices__input--cloned,
+body.dark-mode .choices__item,
+body.dark-mode .choices__inner {
+  background-color: var(--cui-dark-body-bg);
+  color: var(--cui-dark-body-color);
+}
+
+body.dark-mode .choices__item {
+  background-color: var(--cui-dark-body-bg);
+  color: var(--cui-dark-body-color);
+}
+
+body.dark-mode .choices__inner {
+  border: 1px solid var(--cui-dark-border-color);
+  border-radius: 0.5rem;
+}
+
+.choices__input {
+  background-color: #343a40;
+  color: #fff;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.choices__input:focus {
+  background-color: #495057;
+  border-color: #80bdff;
+  color: #fff;
+}
+
+.choices__input--cloned {
+  background-color: #f8f9fa;
+  color: #495057;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+body.dark-mode .choices__input--cloned {
+  background-color: #343a40;
+  color: #e9ecef;
+  border: 1px solid #495057;
+}
+
+body.dark-mode .choices__input--cloned:focus {
+  background-color: #495057;
+  color: #e9ecef;
+}
+
+body:not(.dark-mode) .choices__input--cloned:focus {
+  background-color: var(--cui-body-bg);
+  border-color: #80bdff;
+  color: #fff;
+}
+
+.choices__item.is-selected {
+  background-color: #7079eb;
+  color: black;
+}
+
+.choices__item.choices__placeholder {
+  background-color: #7079eb;
+  color: black;
+}
+
+.choices__item.choices__item--choice {
+  background-color: transparent;
+  color: #ccc;
+}
+
+.choices__input {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+body.dark-mode .choices__input {
+  background-color: #333;
+  color: #e9ecef;
+}
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+  background-color: var(--cui-dark-body-bg);
+  color: white;
+}
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.d-flex {
+  display: flex;
+}
+
+#formFile {
+  flex: 1;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#browseBtn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

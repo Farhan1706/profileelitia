@@ -1,0 +1,343 @@
+{{ define "content" }}
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css"
+  rel="stylesheet"
+/>
+<div class="body flex-grow-1">
+  <div class="container-lg px-4">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header"><strong>Tambah Divisi</strong></div>
+        <div class="card-body">
+          <div class="example">
+            <div class="tab-content rounded-bottom">
+              <div
+                class="tab-pane p-3 active preview"
+                role="tabpanel"
+                id="preview-1000"
+              >
+                <form
+                  id="upload-form"
+                  action="/divisi/tambah/proses"
+                  method="POST"
+                  enctype="multipart/form-data"
+                >
+                  <div class="mb-3">
+                    <label class="form-label" for="name">Nama Divisi</label>
+                    <input
+                      class="form-control"
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="Masukkan nama divisi"
+                      required
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="leader_id"
+                      >Ketua Divisi:</label
+                    >
+                    <select
+                      id="leader_id"
+                      class="form-select"
+                      name="leader_id"
+                      aria-label="Pilih Ketua Divisi"
+                      required
+                    >
+                      <option selected value="">Pilih Ketua Divisi</option>
+                      {{range .Users}}
+                      <option value="{{.ID}}">{{.Username}} - {{.Nama}}</option>
+                      {{end}}
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label" for="description"
+                      >Deskripsi Divisi</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="description"
+                      name="description"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                  <!-- Tombol modal box -->
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label"
+                      >Foto Profil Divisi</label
+                    >
+                    <div class="d-flex">
+                      <button
+                        class="btn btn-outline-primary"
+                        type="button"
+                        id="browseBtn"
+                        data-coreui-toggle="modal"
+                        data-coreui-target="#uploadModal"
+                      >
+                        Unggah Foto Profil
+                      </button>
+                      <input
+                        class="form-control file"
+                        type="text"
+                        id="formFile"
+                        readonly
+                        value="Tidak ada file yang dipilih"
+                        data-coreui-toggle="modal"
+                        data-coreui-target="#uploadModal"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    id="uploadModal"
+                    data-coreui-backdrop="static"
+                    data-coreui-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">
+                            Upload dan Potong Gambar
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-coreui-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="image" class="form-label"
+                              >Pilih Foto:</label
+                            >
+                            <input
+                              type="file"
+                              name="image"
+                              id="image"
+                              accept="image/png, image/jpeg, image/jpg"
+                              class="form-control"
+                            />
+                          </div>
+
+                          <div class="mb-3">
+                            <img
+                              id="image-preview"
+                              src=""
+                              alt="Preview"
+                              class="img-fluid"
+                              style="display: none"
+                            />
+                          </div>
+                          <div id="canvas-container" style="display: none">
+                            <canvas id="crop-canvas" class="img-fluid"></canvas>
+                          </div>
+                          <input
+                            type="hidden"
+                            id="crop-data"
+                            name="crop-data"
+                          />
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-coreui-dismiss="modal"
+                          >
+                            Batal
+                          </button>
+                          <button
+                            type="button"
+                            id="crop-btn"
+                            class="btn btn-primary"
+                          >
+                            Crop Gambar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-primary w-48 mx-2">
+                      Simpan
+                    </button>
+                    <button
+                      class="btn btn-secondary w-48 mx-2"
+                      type="button"
+                      onclick="window.history.back();"
+                    >
+                      Kembali
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Choices("#leader_id", {
+      searchEnabled: true,
+      itemSelectText: "Pilih",
+      renderSelectedChoices: "always",
+      delimiter: ", ",
+    });
+  });
+
+  let cropper;
+  const imageInput = document.getElementById("image");
+  const previewImage = document.getElementById("image-preview");
+  const canvasContainer = document.getElementById("canvas-container");
+  const cropCanvas = document.getElementById("crop-canvas");
+  const uploadForm = document.getElementById("upload-form");
+  const fileInputText = document.getElementById("formFile");
+
+  imageInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const ctx = cropCanvas.getContext("2d");
+      ctx.clearRect(0, 0, cropCanvas.width, cropCanvas.height);
+      canvasContainer.style.display = "none";
+      fileInputText.value = file.name;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+        previewImage.style.display = "block";
+
+        if (cropper) {
+          cropper.destroy();
+        }
+
+        cropper = new Cropper(previewImage, {
+          aspectRatio: 1,
+          autoCropArea: 1,
+          viewMode: 1,
+          ready() {},
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      fileInputText.value = "Tidak ada file yang dipilih";
+    }
+  });
+
+  document.getElementById("crop-btn").addEventListener("click", function () {
+    if (!cropper) return;
+    const cropData = cropper.getData();
+    const croppedCanvas = cropper.getCroppedCanvas({
+      width: cropData.width,
+      height: cropData.height,
+    });
+    cropCanvas.getContext("2d").drawImage(croppedCanvas, 0, 0);
+    // canvasContainer.style.display = "block";
+    document.getElementById("crop-data").value = JSON.stringify(cropData);
+    croppedCanvas.toBlob(function (blob) {
+      const imageUrl = URL.createObjectURL(blob);
+      imgUrlInput.value = imageUrl;
+    });
+
+    setTimeout(function () {
+      const closeButton = document.querySelector(
+        '[data-coreui-dismiss="modal"]'
+      );
+      if (closeButton) {
+        closeButton.click();
+      }
+    });
+  });
+
+  uploadForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const nameInput = document.getElementById("name");
+    const descriptionInput = document.getElementById("description");
+    const leaderIDInput = document.getElementById("leader_id");
+    const fileInput = imageInput.files[0];
+    if (fileInput && fileInput.size > 10 * 1024 * 1024) {
+      // 10MB
+      alert("Ukuran file terlalu besar. Maksimal 10 MB.");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("name", nameInput.value);
+    formData.append("description", descriptionInput.value);
+    formData.append("leader_id", leaderIDInput.value);
+    if (fileInput) {
+      const cropData = cropper.getData();
+      const croppedCanvas = cropper.getCroppedCanvas({
+        width: cropData.width,
+        height: cropData.height,
+      });
+
+      croppedCanvas.toBlob(function (blob) {
+        formData.append("image", blob);
+        formData.append("crop-data", JSON.stringify(cropData));
+
+        fetch("/divisi/tambah/proses", {
+          method: "POST",
+          body: formData,
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              throw new Error("Gagal mengupload gambar.");
+            }
+
+            alert("Gambar berhasil diupload dan dipotong!");
+            uploadForm.reset();
+            previewImage.style.display = "none";
+            canvasContainer.style.display = "none";
+            window.location.reload();
+
+            var modal = bootstrap.Modal.getInstance(
+              document.getElementById("uploadModal")
+            );
+            modal.hide();
+          })
+          .catch((error) => {
+            alert(error.message || "Terjadi kesalahan jaringan.");
+            console.error("Error:", error);
+          });
+      });
+    } else {
+      fetch("/divisi/tambah/proses", {
+        method: "POST",
+        body: formData,
+      })
+        .then(async (response) => {
+          if (!response.ok) {
+            throw new Error("Gagal mengupload data.");
+          }
+
+          alert("Data berhasil disimpan tanpa gambar!");
+          uploadForm.reset();
+          window.location.reload();
+
+          var modal = bootstrap.Modal.getInstance(
+            document.getElementById("uploadModal")
+          );
+          modal.hide();
+        })
+        .catch((error) => {
+          alert(error.message || "Terjadi kesalahan jaringan.");
+          console.error("Error:", error);
+        });
+    }
+  });
+</script>
+
+<!-- CSS ChoicesJS-->
+<link rel="stylesheet" href="/assets/css/divisi.css" />
+{{ end }}
