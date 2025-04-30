@@ -90,6 +90,17 @@ CREATE TABLE `members` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `description`
+--
+
+CREATE TABLE 'description' (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    deskripsi TEXT
+);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `users`
 --
 
