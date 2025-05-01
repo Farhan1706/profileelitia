@@ -10,6 +10,7 @@ import (
 
 func MapRoutes(server *http.ServeMux, db *sql.DB) {
     r := mux.NewRouter()
+	
 
     r.HandleFunc("/logout/", controller.Logout)
     r.HandleFunc("/", controller.NewIndexUtama(db))
@@ -22,6 +23,9 @@ func MapRoutes(server *http.ServeMux, db *sql.DB) {
     r.HandleFunc("/divisi/tambah", controller.AddDivisi())
     r.HandleFunc("/divisi/sunting/{id}", controller.EditDivisi(db))
     r.HandleFunc("/divisi/tambah/proses", controller.InsertDivisi(db))
+    r.HandleFunc("/organisasi/deskripsi", controller.ShowDeskripsi(db))
+    r.HandleFunc("/organisasi/edit_deskripsi", controller.EditDeskripsiForm(db))
+    r.HandleFunc("/organisasi/update_deskripsi", controller.UpdateDeskripsi(db))
 
     // file statis
     r.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
