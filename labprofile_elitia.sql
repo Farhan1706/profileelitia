@@ -86,19 +86,6 @@ CREATE TABLE `members` (
   `role` enum('Ketua','Anggota') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `description`
---
-
-CREATE TABLE 'description' (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    deskripsi TEXT
-);
-
-
 -- --------------------------------------------------------
 
 --
