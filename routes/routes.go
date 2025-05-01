@@ -22,8 +22,6 @@ func MapRoutes(server *http.ServeMux, db *sql.DB) {
     r.HandleFunc("/divisi/tambah", controller.AddDivisi())
     r.HandleFunc("/divisi/sunting/{id}", controller.EditDivisi(db))
     r.HandleFunc("/divisi/tambah/proses", controller.InsertDivisi(db))
-    r.HandleFunc("/deskripsi", controller.ShowDeskripsi(db))
-    r.HandleFunc("/update_deskripsi", controller.UpdateDeskripsi(db))
 
     // file statis
     r.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
