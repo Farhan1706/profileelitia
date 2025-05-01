@@ -22,7 +22,7 @@ func MapRoutes(server *http.ServeMux, db *sql.DB) {
     r.HandleFunc("/divisi/tambah", controller.AddDivisi())
     r.HandleFunc("/divisi/sunting/{id}", controller.EditDivisi(db))
     r.HandleFunc("/divisi/tambah/proses", controller.InsertDivisi(db))
-    r.HandleFunc("/edit_deskripsi", controller.EditDeskripsiForm(db))
+    r.HandleFunc("/deskripsi", controller.EditDeskripsiForm(db))
     r.HandleFunc("/update_deskripsi", controller.UpdateDeskripsi(db))
 
     // file statis
